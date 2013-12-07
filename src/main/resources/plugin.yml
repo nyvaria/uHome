@@ -1,7 +1,7 @@
 name: uHome
 version: ${pom.version}
-author: ks07
-authors: [spathizilla, tkelly]
+author: captbunzo
+authors: [ks07, spathizilla, tkelly]
 main: uk.co.ks07.uhome.uHome
 website: http://www.ultimateminecraft.net/
 softdepend: [Vault]

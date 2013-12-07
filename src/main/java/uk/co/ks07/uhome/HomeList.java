@@ -339,7 +339,7 @@ public class HomeList {
     @Deprecated
     public String getPlayerList(String owner) {
         if (this.hasHomes(owner)) {
-            ArrayList<Home> results = new ArrayList(homeList.get(owner.toLowerCase()).values());
+            ArrayList<Home> results = new ArrayList<Home>(homeList.get(owner.toLowerCase()).values());
 
             String ret = results.toString().replace("[", "").replace("]", "");
             return ret;
@@ -468,7 +468,7 @@ public class HomeList {
     public int cleanupHomes(int cutoffUnixTime) {
         int removed = 0;
         Home home;
-        Iterator it;
+        Iterator<Home> it;
 
         for (HashMap<String, Home> pList : homeList.values()) {
             it = pList.values().iterator();

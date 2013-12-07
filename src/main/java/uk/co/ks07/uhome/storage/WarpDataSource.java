@@ -103,10 +103,12 @@ public class WarpDataSource {
                 ps = conn.createStatement();
                 ps.executeUpdate(sqlOne);
                 conn.commit();
+            	ps.close();
 
                 ps = conn.createStatement();
                 ps.executeUpdate(sqlTwo);
                 conn.commit();
+            	ps.close();
             } catch (SQLException ex) {
                 log.log(Level.SEVERE, "Table Update Exception", ex);
             } finally {
@@ -131,10 +133,12 @@ public class WarpDataSource {
                 ps = conn.createStatement();
                 ps.executeUpdate("INSERT INTO " + TABLE_NAME + " SELECT * FROM homeTable");
                 conn.commit();
+                ps.close();
 
                 ps = conn.createStatement();
                 ps.executeUpdate("DROP TABLE homeTable");
                 conn.commit();
+                ps.close();
             } catch (SQLException ex) {
                 log.log(Level.SEVERE, "Home Import Exception", ex);
             } finally {
@@ -239,6 +243,7 @@ public class WarpDataSource {
             DatabaseMetaData dbm = conn.getMetaData();
             rs = dbm.getTables(null, null, TABLE_NAME, null);
             if (!rs.next()) {
+            	rs.close();
                 rs = dbm.getTables(null, null, "homeTable", null);
                 if (!rs.next()) {
                     return TableStatus.NONE_EXIST;
@@ -246,6 +251,7 @@ public class WarpDataSource {
                     return TableStatus.OLD_ONLY;
                 }
             } else {
+            	rs.close();
                 rs = dbm.getTables(null, null, INV_TABLE_NAME, null);
                 if (!rs.next()) {
                     return TableStatus.NO_ITABLE;
@@ -275,6 +281,7 @@ public class WarpDataSource {
             st = conn.createStatement();
             st.executeUpdate(HOME_TABLE);
             conn.commit();
+            st.close();
 
             if (HomeConfig.usemySQL) {
                 // We need to set auto increment on SQL.
@@ -524,10 +531,12 @@ public class WarpDataSource {
             ps = conn.prepareStatement("DELETE FROM " + TABLE_NAME + " WHERE id = ?");
             ps.setInt(1, warp.index);
             ps.executeUpdate();
+            ps.close();
 
             ps = conn.prepareStatement("DELETE FROM " + INV_TABLE_NAME + " WHERE homeid = ?");
             ps.setInt(1, warp.index);
             ps.executeUpdate();
+            ps.close();
             conn.commit();
         } catch (SQLException ex) {
             log.log(Level.SEVERE, "Home Delete Exception", ex);
@@ -843,6 +852,8 @@ public class WarpDataSource {
                     log.info("There were no homes to export!");
                     return;
                 }
+                set.close();
+                statement.close();
 
                 statement = conn.createStatement();
                 set = statement.executeQuery("SELECT * FROM " + TABLE_NAME);

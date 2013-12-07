@@ -335,6 +335,8 @@ public class HomeCommand implements CommandExecutor {
 
                     player.sendMessage(LocaleManager.getString("econ.insufficient.set", costs));
                     break;
+                default:
+                	break;
             }
         }
     }
@@ -359,6 +361,8 @@ public class HomeCommand implements CommandExecutor {
                 case SUCCESS_MOVED:
                     player.sendMessage(LocaleManager.getString("admin.set.moved", params));
                     break;
+                default:
+                	break;
             }
         }
     }
@@ -442,6 +446,8 @@ public class HomeCommand implements CommandExecutor {
 
                             player.sendMessage(LocaleManager.getString("other.warp.notinvited", params));
                             break;
+                        default:
+                        	break;
                     }
                 } else {
                     // Assume the player entered a name of a warp, rather than a player when responding.
@@ -457,6 +463,8 @@ public class HomeCommand implements CommandExecutor {
                     }
                 }
                 break;
+            default:
+            	break;
         }
     }
 
@@ -493,6 +501,8 @@ public class HomeCommand implements CommandExecutor {
 
                 player.sendMessage(LocaleManager.getString("econ.insufficient.warp", params));
                 break;
+            default:
+            	break;
         }
     }
 
@@ -523,6 +533,8 @@ public class HomeCommand implements CommandExecutor {
             case NOT_EXISTS:
                 player.sendMessage(LocaleManager.getString("other.warp.notexists", params));
                 break;
+            default:
+            	break;
         }
     }
 
@@ -550,6 +562,8 @@ public class HomeCommand implements CommandExecutor {
                 case DUPLICATE:
                     player.sendMessage(LocaleManager.getString("own.invite.already", params));
                     break;
+                default:
+                	break;
             }
         } else {
             player.sendMessage(LocaleManager.getString("own.invite.notexists", params));
@@ -958,15 +972,15 @@ public class HomeCommand implements CommandExecutor {
     }
 
     private static int getPageNo(String input) {
-        int ret = 1;
+        int pageNumber;
 
         try {
-            ret = Integer.parseInt(input);
+        	pageNumber = Integer.parseInt(input);
         } catch (NumberFormatException ex) {
-            // Presume 1.
-        } finally {
-            return ret;
+        	pageNumber = 1;
         }
+        
+        return pageNumber;
     }
 
     private static void sendPaginated(String header, ArrayList<String> messages, int printPage, CommandSender receiver) {

@@ -5,11 +5,17 @@
 
 	<groupId>uk.co.ks07</groupId>
 	<artifactId>uhome</artifactId>
-	<version>1.5.3</version>
+	<version>1.5.3-captbunzo01</version>
 	<packaging>jar</packaging>
 
 	<name>uHome</name>
-	<description>A multiple home plugin for Bukkit.</description>
+	<description>A multiple home plugin for Bukkit.
+
+This is a fork by captbunzo to make sure it's still working with newer versions of Minecraft (1.6.4 and 1.7.2) and possibly to eventually add some features as are appropriate for my server.
+
+Thanks much to the work of those ahead of me including ks07 and tkelly and spathizilla (and probably more).
+
+Note that if ks07 decides resurfaces and updates his main branch of this, I am likely to ditch working on this (unless I've started adding any particular features of note).</description>
 	<url>http://dev.bukkit.org/server-mods/uhome/</url>
 
 	<properties>
@@ -31,14 +37,14 @@
 		<dependency>
 		        <groupId>org.bukkit</groupId>
 			<artifactId>bukkit</artifactId>
-			<version>1.4.6-R0.3</version>
+			<version>1.6.4-R2.0</version>
 			<type>jar</type>
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>net.milkbowl.vault</groupId>
 			<artifactId>Vault</artifactId>
-			<version>1.2.22-SNAPSHOT</version>
+			<version>1.2.27-SNAPSHOT</version>
 			<type>jar</type>
 			<scope>provided</scope>
 		</dependency>
@@ -105,15 +111,15 @@
 	</licenses>
 
 	<scm>
-		<connection>scm:git:git://github.com/ks07/uHome.git</connection>
-		<developerConnection>scm:git:ssh://git@github.com/ks07/uHome.git</developerConnection>
-		<url>https://github.com/ks07/uHome</url>
+		<connection>scm:git:git://github.com/captbunzo/uHome.git</connection>
+		<developerConnection>scm:git:ssh://git@github.com/captbunzo/uHome.git</developerConnection>
+		<url>https://github.com/captbunzo/uHome</url>
 		<tag>HEAD</tag>
 	</scm>
 
 	<issueManagement>
-		<system>Bukkit Dev</system>
-		<url>http://dev.bukkit.org/server-mods/uhome/tickets/</url>
+		<system>GitHub</system>
+		<url>https://github.com/captbunzo/uHome/issues</url>
 	</issueManagement>
 
 	<developers>
